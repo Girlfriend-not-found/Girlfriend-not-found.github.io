@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
   
-  <title>Archive: 2021/4 - Hexo</title>
+  <title>CUMTCTF_SPRING - Hexo</title>
   
     <link rel="shortcut icon" href="/favicon.png">
   
@@ -93,105 +93,106 @@
         </div>
     </div>
 </nav>
-        <div class="container">
-    
+        <article class="post">
+    <div class="meta">
+        
+        <div class="date" id="date">
+            
+            
+            
+            
+            <span>April</span>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <span>7,</span>
+            <span>2021</span>
+        </div>
+        
 
-    <div class="post-list">
-        
-        <article class="post-list-item">
-            <a href="/2021/04/07/first-passage/">
-                
-                <div class="content">
-                    <div class="title">
-                        first passage
-                    </div>
-                    
-                    <div class="time">
-                        
-                        
-                        
-                        
-                        <span>April</span>
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        <span>&nbsp;7,&nbsp;</span>
-                        <span>2021</span>
-                    </div>
-                </div>
-            </a>
-        </article>
-        
-        <article class="post-list-item">
-            <a href="/2021/04/07/CUMT-WEB/">
-                
-                <div class="content">
-                    <div class="title">
-                        CUMTCTF_SPRING
-                    </div>
-                    
-                    <div class="time">
-                        
-                        
-                        
-                        
-                        <span>April</span>
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        <span>&nbsp;7,&nbsp;</span>
-                        <span>2021</span>
-                    </div>
-                </div>
-            </a>
-        </article>
-        
-        <article class="post-list-item">
-            <a href="/2021/04/07/hello-world/">
-                
-                <div class="content">
-                    <div class="title">
-                        Hello World
-                    </div>
-                    
-                    <div class="time">
-                        
-                        
-                        
-                        
-                        <span>April</span>
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        <span>&nbsp;7,&nbsp;</span>
-                        <span>2021</span>
-                    </div>
-                </div>
-            </a>
-        </article>
-        
+        <h2 class="title">CUMTCTF_SPRING</h2>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="content">
+        <h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="web1"><a href="#web1" class="headerlink" title="web1"></a>web1</h1><h2 id="PHP伪协议"><a href="#PHP伪协议" class="headerlink" title="PHP伪协议"></a>PHP伪协议</h2><h4 id="0x01-常见的文件包含函数："><a href="#0x01-常见的文件包含函数：" class="headerlink" title="0x01 常见的文件包含函数："></a>0x01 常见的文件包含函数：</h4><ol>
+<li>include </li>
+<li>require </li>
+<li>include_once </li>
+<li>require_once </li>
+<li>highlight_file </li>
+<li>show_source </li>
+<li>readfile</li>
+<li>file_get_contents </li>
+<li>fopen </li>
+<li>file(比较常见)</li>
+</ol>
+<h4 id="0x02-PHP伪协议事实上就是支持的协议与封装协议（12种）"><a href="#0x02-PHP伪协议事实上就是支持的协议与封装协议（12种）" class="headerlink" title="0x02 PHP伪协议事实上就是支持的协议与封装协议（12种）"></a>0x02 PHP伪协议事实上就是支持的协议与封装协议（12种）</h4><p>a. file:// — 访问本地文件系统</p>
+<p>b. http:// — 访问 HTTP(s) 网址</p>
+<p>c. ftp:// — 访问 FTP(s) URLs</p>
+<p>d. php:// — 访问各个输入/输出流（I/O streams）</p>
+<p>e. zlib:// — 压缩流</p>
+<p>f. data:// — 数据（RFC 2397）</p>
+<p>g. glob:// — 查找匹配的文件路径模式</p>
+<p>h. phar:// — PHP 归档</p>
+<p>i. ssh2:// — Secure Shell 2</p>
+<p>j. rar:// — RAR</p>
+<p>k. ogg:// — 音频流</p>
+<p>l. expect:// — 处理交互式的流</p>
+<table>
+<thead>
+<tr>
+<th align="center">协议</th>
+<th align="center">利用条件</th>
+<th align="center">说明</th>
+<th align="center">用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">file://</td>
+<td align="center">allow_url_fopen和allow_url_include双Off情况下可正常使用</td>
+<td align="center">访问本地文件系统</td>
+<td align="center">file://文件绝对路径和文件名</td>
+</tr>
+<tr>
+<td align="center">php://</td>
+<td align="center">不需要开启allow_url_fopen(仅php://input,php://stdin,php://memory和php://temp需要allow_url_include=On)</td>
+<td align="center">php://input 可以访问请求的原始数据的只读流,将post请求中的数据作为php代码执行。</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">zip://,bzip2://,zlib://</td>
+<td align="center">双Off条件下可使用</td>
+<td align="center">zip://test.zip#x.txt zip://绝对路径#子文件名,x.txt内容就会以php代码执行compress.bzip2://test.bz2和compress.zlib://test.gz用法相同 , <a target="_blank" rel="noopener" href="https://blog.dyboy.cn/include.php?file=compress.bzip2://%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84/shell.jpg">https://blog.dyboy.cn/include.php?file=compress.bzip2://绝对路径/shell.jpg</a> 或者 compress.bzip2://./shell.jpg</td>
+<td align="center">可以访问压缩文件中的子文件，更重要的是不需要指定后缀名</td>
+</tr>
+<tr>
+<td align="center">data://</td>
+<td align="center">双On</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://blog.dyboy.cn/include.php?file=data://text/plain">https://blog.dyboy.cn/include.php?file=data://text/plain</a>,<?php phpinfo();?>，或者 data://text/plain;base64,PD9waHAgcGhwaW5mbygpPw4= ， 或者 data:text/plain,<?php phpinfo();?> ， 或者 data:text/plain;base64,PD9waHAgcGhwaW5mbygpPw4=</td>
+<td align="center">同样以string可写入php代码，并执行</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    <div class="about">
+        <h1>About this Post</h1>
+        <p>This post is written by John Doe, licensed under <a
+                target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0">CC BY-NC 4.0</a>.</p>
     </div>
 
     
-</div>
+        
+    
+</article>
         <footer>
     <div class="inner">
         <div class="links">
